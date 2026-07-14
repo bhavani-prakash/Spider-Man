@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Spider Suit</title>
+
+    <link rel="stylesheet" href="./suit-booking.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<img src="./assets/spidy/spidy-wall-nobg.png" class="spydi-wall">
+
+<section class="booking-container">
+
+    <div class="heading">
+        <h1>BOOK YOUR <span>SPIDER SUIT</span></h1>
+    </div>
+
+    <form id="suitForm">
+
+        <div class="input-box">
+            <label>Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+        </div>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="example@gmail.com"
+                required>
+        </div>
+
+        <div class="input-box">
+            <label>Select Suit</label>
+
+            <select id="suit" required>
+
+                <option value="">Select Suit</option>
+
+                <option>Classic Suit</option>
+
+                <option>Stark Suit</option>
+
+                <option>Integrated Suit</option>
+
+                <option>Black and Gold Suit</option>
+
+            </select>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Quantity</label>
+
+            <input
+                type="number"
+                id="quantity"
+                min="1"
+                max="10"
+                value="1"
+                required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Address</label>
+
+            <textarea
+                id="address"
+                rows="5"
+                placeholder="Your Location"
+                required></textarea>
+
+        </div>
+
+        <button type="submit" class="book-btn">
+            BOOK NOW
+        </button>
+
+    </form>
+
+    <h2 class="booking-title">My Suit Bookings</h2>
+
+    <div id="bookingList"></div>
+
+</section>
+
+<script>
+
+const form = document.getElementById("suitForm");
+
+const bookingList = document.getElementById("bookingList");
+
+displayBookings();
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const booking = {
+
+        name: document.getElementById("name").value,
+
+        email: document.getElementById("email").value,
+
+        suit: document.getElementById("suit").value,
+
+        quantity: Number(document.getElementById("quantity").value),
+
+        address: document.getElementById("address").value
+
+    };
+
+    let bookings =
+        JSON.parse(localStorage.getItem("suitBookings")) || [];
+
+    bookings.push(booking);
+
+    localStorage.setItem(
+        "suitBookings",
+        JSON.stringify(bookings)
+    );
+
+    alert("🕷️ Suit Booked Successfully!");
+
+    form.reset();
+
+    displayBookings();
+
+});
+
+function displayBookings(){
+
+    const bookings =
+        JSON.parse(localStorage.getItem("suitBookings")) || [];
+
+    bookingList.innerHTML = "";
+
+    if(bookings.length===0){
+
+        bookingList.innerHTML="<p style='color:white'>No suit bookings yet.</p>";
+
+        return;
+
+    }
+
+    bookings.forEach((booking,index)=>{
+
+        bookingList.innerHTML += `
+
+        <div class="ticket-card">
+
+            <h3>${booking.suit}</h3>
+
+            <p><strong>Name:</strong> ${booking.name}</p>
+
+            <p><strong>Email:</strong> ${booking.email}</p>
+
+            <p><strong>Quantity:</strong> ${booking.quantity}</p>
+
+            <p><strong>Address:</strong> ${booking.address}</p>
+
+            <button onclick="deleteBooking(${index})">
+                Cancel Booking
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function deleteBooking(index){
+
+    let bookings =
+        JSON.parse(localStorage.getItem("suitBookings")) || [];
+
+    bookings.splice(index,1);
+
+    localStorage.setItem(
+        "suitBookings",
+        JSON.stringify(bookings)
+    );
+
+    displayBookings();
+
+}
+
+</script>
+
+</body>
+</html>

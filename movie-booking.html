@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man Brand New Day</title>
+
+    <link rel="stylesheet" href="./movie-booking.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <a href="index.html" class="back-btn">
+        ← Back
+    </a>
+
+    <div class="container">
+
+        <div class="poster">
+
+            <img src="https://i.pinimg.com/736x/32/62/68/3262683cadad594334971a9d20033a86.jpg"
+                alt="Spider-Man">
+
+        </div>
+
+        <div class="booking">
+
+            <h3>MARVEL STUDIOS</h3>
+
+            <h1>SPIDER-MAN</h1>
+
+            <h2>BRAND NEW DAY</h2>
+
+            <p>Book your tickets for the biggest Spider-Man adventure.</p>
+
+            <form id="bookingForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    required>
+
+                <select id="theatre" required>
+
+                    <option value="">Select Theatre</option>
+
+                    <option>Ravi 4K</option>
+
+                    <option>Sai Chaitra</option>
+
+                    <option>Siddhartha</option>
+
+                    <option>ASR 4K Dolby Atmos</option>
+
+                </select>
+
+                <div class="row">
+
+                    <input
+                        type="date"
+                        id="date"
+                        required>
+
+                    <select id="time" required>
+
+                        <option value="">Select Time</option>
+
+                        <option>10:00 AM</option>
+
+                        <option>1:30 PM</option>
+
+                        <option>5:00 PM</option>
+
+                        <option>8:45 PM</option>
+
+                    </select>
+
+                </div>
+
+                <select id="seats" required>
+
+                    <option value="">Select Seats</option>
+
+                    <option value="1">1 Seat</option>
+
+                    <option value="2">2 Seats</option>
+
+                    <option value="3">3 Seats</option>
+
+                    <option value="4">4 Seats</option>
+
+                </select>
+
+                <button type="submit">
+                    BOOK NOW
+                </button>
+
+            </form>
+
+            <h2 class="booking-title">My Bookings</h2>
+
+<div id="bookingList"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+const bookingForm = document.getElementById("bookingForm");
+const bookingList = document.getElementById("bookingList");
+
+// Load existing bookings when page opens
+displayBookings();
+
+bookingForm.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const booking = {
+
+        movie: "Spider-Man Brand New Day",
+
+        name: document.getElementById("name").value,
+
+        email: document.getElementById("email").value,
+
+        theatre: document.getElementById("theatre").value,
+
+        date: document.getElementById("date").value,
+
+        time: document.getElementById("time").value,
+
+        seats: Number(document.getElementById("seats").value),
+
+        amount: Number(document.getElementById("seats").value) * 400
+
+    };
+
+    let bookings =
+        JSON.parse(localStorage.getItem("movieBookings")) || [];
+
+    bookings.push(booking);
+
+    localStorage.setItem(
+        "movieBookings",
+        JSON.stringify(bookings)
+    );
+
+    alert("🎟 Ticket Booked Successfully!");
+
+    bookingForm.reset();
+
+    displayBookings();
+
+});
+
+
+function displayBookings() {
+
+    const bookings =
+        JSON.parse(localStorage.getItem("movieBookings")) || [];
+
+    bookingList.innerHTML = "";
+
+    if (bookings.length === 0) {
+
+        bookingList.innerHTML = "<p>No bookings yet.</p>";
+
+        return;
+    }
+
+    bookings.forEach((booking, index) => {
+
+        bookingList.innerHTML += `
+
+        <div class="ticket-card">
+
+            <h3>${booking.movie}</h3>
+
+            <p><strong>Name:</strong> ${booking.name}</p>
+
+            <p><strong>Theatre:</strong> ${booking.theatre}</p>
+
+            <p><strong>Date:</strong> ${booking.date}</p>
+
+            <p><strong>Time:</strong> ${booking.time}</p>
+
+            <p><strong>Seats:</strong> ${booking.seats}</p>
+
+            <p><strong>Total:</strong> ₹${booking.amount}</p>
+
+            <button onclick="deleteBooking(${index})">
+                Cancel Booking
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+function deleteBooking(index) {
+
+    let bookings =
+        JSON.parse(localStorage.getItem("movieBookings")) || [];
+
+    bookings.splice(index, 1);
+
+    localStorage.setItem(
+        "movieBookings",
+        JSON.stringify(bookings)
+    );
+
+    displayBookings();
+
+}
+
+</script>
+
+</body>
+
+</html>

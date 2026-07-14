@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.hero{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    border: 2px solid red;
+    overflow-x: hidden;
+}
+.suit-popup{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    border: 2ps soid rgb(46, 97, 155);
+    z-index: 2;
+    color: white;
+    padding: 20px;
+    width: 100px;
+    background-color: rgb(184, 36, 36);
+    border-radius: 20px;
+}
+.suit1{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.indi-suit{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 500px;
+    width: 300px;
+    z-index: 2;
+    .indi-suit{
+    transition: opacity 2s ease;
+}
+}
+.suit-pics{
+    position: absolute;
+    height: 250px;
+    width: 100vw;
+    bottom: 5%;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.suit-pics .suit-side{
+    display: flex;
+    gap: 80px;
+    margin: 0px 20px;
+}
+.suit-div{
+    height: 100%;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 2px solid red;
+    border-radius: 10px;
+    text-align: center;
+}
+.suit-pics img{
+    height: 180px;
+    width: 130px;
+   
+
+}
+
+.buy-btn{
+    padding: 18px 60px;
+    font-family:'Bebas Neue', cursive;
+    border-radius: 20px;
+    background-color: rgb(177, 168, 168);
+    color: red;
+    text-decoration: none;
+    font-size: 17px;
+    font-style: bold;
+    text-align: center;
+    font-weight: 600;
+    border: 3px solid rgb(150, 41, 41);
+    position: absolute;
+    bottom: 5%;
+    left: 43%;
+    z-index: 5;
+    
+}
+.buy-btn:hover{
+    background-image: url(./assets/spidy/image.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-size: 20px;     
+}
+
+
+
