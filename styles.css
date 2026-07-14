@@ -15,6 +15,41 @@ body{
         #090909
     );
 }
+#loader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:999999;
+}
+
+.loader-spinner{
+    width:70px;
+    height:70px;
+    border:6px solid #333;
+    border-top:6px solid red;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+#loader h2{
+    margin-top:20px;
+    color:white;
+    letter-spacing:2px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+#website{
+    display:none;
+}
 
 
 .hero{

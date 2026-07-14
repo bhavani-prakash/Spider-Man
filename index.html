@@ -9,9 +9,25 @@
 </head>
 
 <body>
+    <div id="loader">
+    <div class="loader-spinner"></div>
+    <h2>Loading Spider-Verse...</h2>
+</div>
+
+<div id="website">
     <section class="hero">
         <div class="video-section">
-            <video autoplay muted 1 src="./assets/spiderman.mp4" class="hero-video" id="Hero-video"></video>
+            <video
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    class="hero-video"
+    id="Hero-video">
+
+    <source src="./assets/spiderman.mp4" type="video/mp4">
+
+</video>
         </div>
         <div class="hero-content">
             <img src="./city-hd.jpg" alt="city" class="back">
@@ -131,10 +147,23 @@ and experience the legend of Peter Parker.</p> -->
 
 </footer>
 
-    <script>
-        const video = document.getElementById("Hero-video");
+</div> 
 
-        video.playbackRate = 1.3;
+    <script>
+        const loader = document.getElementById("loader");
+const website = document.getElementById("website");
+const video = document.getElementById("Hero-video");
+
+video.playbackRate = 1.3;
+
+video.addEventListener("loadeddata", () => {
+
+    loader.style.display = "none";
+    website.style.display = "block";
+
+    video.play();
+
+});
 
         const thanks = document.querySelector(".thanks-msg");
         const photoBtn = document.getElementById("photoBtn");
