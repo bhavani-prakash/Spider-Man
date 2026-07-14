@@ -353,6 +353,7 @@ body{
 /* Countdown */
 .countdown{
     position:absolute;
+    top:-0%;
     color:rgb(12, 8, 206);
     font-size:100px;
     font-weight:bold;
@@ -399,6 +400,7 @@ body{
 
 .thanks-msg{
     position:absolute;
+    top:5%;
     color:rgb(236, 227, 227);
     padding:20px;
     border-radius:20px;
