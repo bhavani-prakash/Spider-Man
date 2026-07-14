@@ -572,4 +572,49 @@ body{
         gap:140px;
         margin-top:150px;
     }
+    .spidy-text{
+        height: 300px;
+        width: 400px;
+        top: 0%;
+        left: 0%;
+    }
+    .sub-heading{
+        top: 17%;
+        left: 10%;
+        font-size: 18px;
+    }
+    .main-img{
+        opacity: 0;
+        height: 400px;
+        width: 400px;
+        top: -10%;
+        left: 70%;
+    }
+    @keyframes spidermanEntry {
+    from{
+        opacocity: 0;
+        top:-80%;
+        left:100%;
+
+    }
+    to{
+        opacity: 1;
+        top:5%;
+        left:50%;
+        scale: 1.1;
+    }
+    
+}
+.hero-btns{
+        top: 50%;
+        left: 10%;
+    }
+    .hero-btns a{
+        padding: 15px 40px;
+        font-size: 15px;
+    }
+    .hero-btns p{
+        margin-left: 20px;
+    }
+
 }

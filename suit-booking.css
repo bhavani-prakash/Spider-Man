@@ -273,13 +273,19 @@ textarea{
 
 .booking-container{
 
-    width:92%;
+    width:90%;
     padding:25px;
+    margin-right:230px
 }
+.spider-wall{
+    visibility: hidden;
+}
+
 
 .heading h1{
 
     font-size:30px;
 }
+
 
 }

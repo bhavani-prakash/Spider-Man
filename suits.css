@@ -106,5 +106,30 @@
     font-size: 20px;     
 }
 
+@media (max-width: 768px){
+    .suit-popup{
+        width: 80px;
+        font-size: 12px;
+    }
+    .indi-suit{
+        height: 300px;
+        width: 200px;
+    }
+    .suit-pics{
+        height: 190px;
+        overflow-x: scroll;
+    }
+    .suit-pics img{
+        height: 120px;
+        width: 90px;
+    }
+    .buy-btn{
+        padding: 10px 30px;
+        font-size: 14px;
+        bottom: 2%;
+        left: 35%;
+    }
+}
+
 
 
